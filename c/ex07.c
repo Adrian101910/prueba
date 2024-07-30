@@ -1,46 +1,15 @@
-#include <unistd.h>
-#include <stdio.h>
-
-int Posicion(int num, int pos) {
-    int digito;
-    int i = 1;
-    int num_digits = 0;
-    int temp = num;
-
-    while (temp > 0) {
-        temp /= 10;
-        num_digits++;
+void ft_putnbr(int nb)
+{
+    char c;
+    if (nb < 0)
+    {
+        write(1, "-", 1);  // Imprime el signo negativo
+        nb = -nb;  // Convierte el número a positivo para facilitar el procesamiento
     }
-
-    if (pos > num_digits) {
-        return -1; 
+    if (nb >= 10)
+    {
+        ft_putnbr(nb / 10);  // Llama recursivamente para imprimir los dígitos más significativos
     }
-
-    while (i < pos) {
-        num /= 10;
-        i++;
-    }
-    digito = num % 10;
-    return digito;
-}
-
-void funcion(int n){
-    int length = 0;
-    int temp = n; 
-    while (temp > 0) {
-        temp /= 10;
-        length++;
-    }
-
-    while (length > 0) {
-        char numerito;
-        numerito = Posicion(n, length) + '0';
-        write(1, &numerito, 1);
-        length--;
-    }
-}
-
-int main(void){
-    funcion(1234);
-    return 0;
+    c = (nb % 10) + '0';  // Convierte el último dígito a carácter
+    write(1, &c, 1);  // Imprime el último dígito
 }
