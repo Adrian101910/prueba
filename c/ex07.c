@@ -1,15 +1,48 @@
-void ft_putnbr(int nb)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adrianro <adrianro@student.42malaga.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/29 16:04:28 by adrianro          #+#    #+#             */
+/*   Updated: 2024/07/29 16:11:12 by adrianro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
+#include <unistd.h>
+
+void	ft_print_comb2(void)
 {
-    char c;
-    if (nb < 0)
-    {
-        write(1, "-", 1);  // Imprime el signo negativo
-        nb = -nb;  // Convierte el número a positivo para facilitar el procesamiento
-    }
-    if (nb >= 10)
-    {
-        ft_putnbr(nb / 10);  // Llama recursivamente para imprimir los dígitos más significativos
-    }
-    c = (nb % 10) + '0';  // Convierte el último dígito a carácter
-    write(1, &c, 1);  // Imprime el último dígito
+	int		n1;
+	int		n2;
+	char	n_1;
+	char	n_2;
+        n1 = 0;
+	while (n1 <= 98)
+	{
+	    n2 = n1 + 1;
+		while (n2 <= 99)
+		{
+			n_1 = (n1 / 10) + '0';
+			n_2 = (n1 % 10) + '0';
+
+			write(1, &n_1, 1);
+			write(1, &n_2, 1);
+			write(1, " ", 1);
+			n_1 = (n2 / 10) + '0';
+			n_2 = (n2 % 10) + '0';
+			write(1, &n_1, 1);
+			write(1, &n_2, 1);
+			if(n1 < 98 || n2 < 99)
+			{
+			write(1, ", ", 2);
+			}
+			n2++;
+			
+		}
+		n1++;
+
+	}
 }
