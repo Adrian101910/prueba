@@ -13,36 +13,33 @@
 
 #include <unistd.h>
 
+#include <unistd.h>
+
 void	ft_print_comb2(void)
 {
 	int		n1;
 	int		n2;
 	char	n_1;
-	char	n_2;
-        n1 = 0;
+
+	n1 = 0;
 	while (n1 <= 98)
 	{
-	    n2 = n1 + 1;
+		n2 = n1 + 1;
 		while (n2 <= 99)
 		{
 			n_1 = (n1 / 10) + '0';
-			n_2 = (n1 % 10) + '0';
-
 			write(1, &n_1, 1);
-			write(1, &n_2, 1);
+			n_1 = (n1 % 10) + '0';
+			write(1, &n_1, 1);
 			write(1, " ", 1);
 			n_1 = (n2 / 10) + '0';
-			n_2 = (n2 % 10) + '0';
 			write(1, &n_1, 1);
-			write(1, &n_2, 1);
-			if(n1 < 98 || n2 < 99)
-			{
-			write(1, ", ", 2);
-			}
+			n_1 = (n2 % 10) + '0';
+			write(1, &n_1, 1);
+			if (n1 < 98 || n2 < 99)
+				write(1, ", ", 2);
 			n2++;
-			
 		}
 		n1++;
-
 	}
 }
